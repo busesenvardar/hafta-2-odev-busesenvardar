@@ -1,0 +1,12 @@
+# Soru 1) 1980’den itibaren spor grubu bazında en çok madalya alan 1. 3. 5. ülkeyi bulalım.
+```SQL
+select *
+from (
+select sport, country, count(*) as madalya, dense_rank() over ( order by sport) indexer,dense_rank() over ( order by count(*) desc) deneme 
+from buse_senvardar.summer_medals
+where sport is not null 
+group by sport, country
+order by sport, country ) t
+where deneme in (1,3,5)
+
+```
